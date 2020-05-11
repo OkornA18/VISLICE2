@@ -17,7 +17,7 @@ with open("VISLICE2/besede.txt") as datoteka_bazena:
 
 class Igra:
     def __init__(self, geslo, crke=None):
-        self.geslo = geslo,lower()
+        self.geslo = geslo.lower()
         if crke is None:
             self.crke = []
         else:
