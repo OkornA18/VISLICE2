@@ -60,7 +60,7 @@ class Igra:
 
         self.crke.append(ugibana_crka)
 
-        if ugibana_crka in self.geslo():
+        if ugibana_crka in self.geslo:
             #uganil je
             if self.zmaga():
                 return ZMAGA
