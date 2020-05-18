@@ -11,7 +11,7 @@ ZMAGA = 'W'
 PORAZ = 'X'
 
 bazen_besed = []
-with open("besede.txt" encoding='UTF-8') as datoteka_bazena:
+with open("besede.txt", encoding = "UTF-8") as datoteka_bazena:
     for beseda in datoteka_bazena:
         bazen_besed.append(beseda.strip().lower())
 
