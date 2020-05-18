@@ -1,12 +1,13 @@
 STEVILO_DOVOLJENIH_NAPAK = 10
 
+ZACETEK = 'Z'
+
 #konstante za rezultate ugibanj
 PRAVILNA_CRKA = '+'
 PONOVLJENA_CRKA = 'o'
 NAPAČNA_CRKA = '-'
 
 #konstante za zmago in poraz
-ZACETEK = 'S'
 ZMAGA = 'W'
 PORAZ = 'X'
 
@@ -74,5 +75,39 @@ class Igra:
 
 def nova_igra():
     import random
-    izbrana_beseda = random.choice(bazen_besed)
-    return Igra(izbrana_beseda)
+    nakljucna_beseda = random.choice(bazen_besed)
+    return Igra(nakljucna_beseda)
+
+class Vislice:
+    """
+    Skrbi za trenutno stanje več iger(imel bo več objektov tipa Igra)
+    """
+    def __init__(self):
+        # slovar, ki ID-ju priredi objekt njegove igre
+        self.igre = {}
+
+    def prost_id_igre(self):
+        """vrne nek id, ki ga ne uporablja nobena igra"""
+        if len(self.igre) == 0:
+            return 0
+        else:
+            return max(self.igre.keys()) + 1
+        # ali return len(self.igre.keys())
+
+    def nova_igra(self):
+        # dobimo svež id
+        nov_id = self.prost_id_igre()
+        # naredimo novo igro
+        sveza_igra = nova_igra()
+        # vse to shranimo v self.igre
+        self.igre[nov_id] = (sveza_igra, ZACETEK)
+        # vrnemo nov id
+        return nov_id
+
+    def ugibaj(self, id_igre, crka):
+        # dobimo staro igro ven
+        trenutna_igra, _ = self.igre[id_igre]
+        # ugibamo crko
+        novo_stanje = trenutna_igra.ugibaj(crka)
+        # zapišemo posodobljeno stanje in igro nazaj v "BAZO"
+        self.igre[id_igre] = (trenutna_igra, novo_stanje)
