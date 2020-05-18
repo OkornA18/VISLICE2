@@ -24,10 +24,10 @@ def pozeni_vmesnik():
         print(izpis_igre(trenutna_igra))
         crka = zahtevaj_vnos()
         trenutna_igra.ugibaj(crka)
-        if trenutna_igra.ugibaj(crka):
+        if trenutna_igra.zmaga():
             print(izpis_zmage(trenutna_igra))
             break
-        elif trenutna_igra.ugibaj(crka):
+        elif trenutna_igra.poraz():
             print(izpis_poraza(trenutna_igra))
             break
             
