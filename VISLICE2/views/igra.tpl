@@ -1,9 +1,7 @@
+
 % import model
+% rebase('views/base.tpl')
 
-<!DOCTYPE html>
-<html>
-
-<body>
 
   <h1>Vislice</h1>
 
@@ -21,7 +19,7 @@
      <h1> IZGUBIL SI </h1>
    % else:
 
-  <form action="/igra/{{id_igre}}/" method="post">
+  <form action="/igra/" method="post">
     Črka: <input type="text" name="crka">
     <button type="submit">Ugibaj novo črko</button>
   </form>
@@ -33,6 +31,3 @@
   <form action="/igra/" method="post">
     <button type="submit">Nova igra</button>
   </form>
-</body>
-
-</html>
